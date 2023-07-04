@@ -38,12 +38,29 @@ add된 파일=tracked file을 로컬 저장소(내 컴퓨터)에 저장
 
 로컬 저장소의 파일(commit된 파일)을 원격저장소에 저장
 
-### gitignore
+### .gitignore (점gitignore)
 
-해당 파일 내부에 작성된 파일명의 파일은 git으로 관리되지 않는다.<br>
+.gitignore 내부에 작성된 파일명의 파일은 git으로 관리되지 않는다.<br>
 => 비밀번호, 보안, 로그 파일 등 공유하면 안되는 파일을 작성
 
 # git log
 
-commit한 기록을 확인할 수 있다.
-이력관리(history management)
+commit한 기록을 확인할 수 있다.<br>
+=이력관리(history management)
+
+```
+git log --stat
+# 각 커밋별 세부내용(추가/삭제)를 볼 수 있다.
+# enter로 넘어가고 q로 빠져나올 수 있다.
+```
+
+# git checkout [해시값]
+
+해시값=git log에서 보이는 commit의 고유한 <br>
+해당 커밋의 상태로 돌아간다.<br>
+
+**주의** <br>
+이 경우 git log 화면도 이전으로 돌아간다.<br>
+따라서 뒤로 다시 원래대로 하려면 원래 commit의 해시값 잘 찾아야 한다.
+
+git checkout 활용사례 : https://zoosso.tistory.com/729
