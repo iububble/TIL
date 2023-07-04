@@ -64,3 +64,33 @@ git log --stat
 따라서 뒤로 다시 원래대로 하려면 원래 commit의 해시값 잘 찾아야 한다.
 
 git checkout 활용사례 : https://zoosso.tistory.com/729
+
+# git branch
+
+독립적인 코드 작성(commit)을 위한 구조<br>
+중첩, 중복 방지함
+
+## 왜 쓸까? why?
+
+Ex)기존 코드와는 다른 테스트 버전 코드가 필요할 때 <br>
+팀원들이 작업시 충돌을 방지하기 위해 브랜치를 나누어서 개발한다.
+
+## git merge 브랜치이름
+
+현재 branch에서 타branch의 코드와 합친다.
+
+## 충돌 confilt
+
+merge할 때 동일한 부분 변경 시 발생<br>
+이 경우 어떻게 합칠 것인지 수동으로 수정필요
+
+# remote repository 원격 저장소
+
+코드 공유를 위한 저장소<br>
+git을 통해 local repository와 연동하여 사용
+
+```
+git remote {저장소별명} [원격 저장소 주소] #원격 저장소 연결
+git remote -v                           #연결된 원격저장소 목록
+
+```
