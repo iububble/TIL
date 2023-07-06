@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- TODO: 또 무엇이 필요할까요? -->
+    <title>네이버</title>
+    <meta name="author" content="jinha" />
+    <meta name="discription" content="the naver page of quest1" />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <body>
+    <header>
+      <!-- TODO: 어디까지를 header로 보는 것이 좋을까요? -->
+      <div>
+        <button align="left">
+          <img src="image/hamburger.png" />
+        </button>
+        <img align="right" src="image/screen.png" />
+      </div>
+      <img src="image/naver.png" alt="네이버 배너 이미지" />
+    </header>
+
+    <section class="main">
+      <!-- TODO: main은 어떤 식으로 나눌 수 있을까요? -->
+      <main>
+        <section id="search" align="center">
+          <span
+            ><form style="border: none" placeholder="검색어를 입력하세요" />
+            <fieldset>
+              <input
+                id="query"
+                name="query"
+                type="search"
+                placeholder="검색창을 입력해주세요"
+              />
+              <img src="image/searchIcons.png" alt="검색보조아이콘" />
+            </fieldset>
+          </span>
+        </section>
+        <br />
+        <br />
+        <section align="center">
+          <table>
+            <tr>
+              <td>
+                <img src="image/news.png" alt="뉴스판.img" /><br />
+                뉴스판<br />
+              </td>
+              <td>
+                <img src="image/neweconomic.png" alt="뉴스판.img" /><br />
+                경제지표판<br />
+              </td>
+              <td>
+                <img src="image/mail.png" alt="카페 아이콘" /><br />
+                메일판<br />
+              </td>
+              <td>
+                <img src="image/mail.png" alt="카페 아이콘" /><br />
+                메일판<br />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="image/mail.png" alt="카페 아이콘" /><br />
+                메일판<br />
+              </td>
+              <td>
+                <img src="image/cafe.png" alt="카페 아이콘" /><br />
+                카페판<br />
+              </td>
+              <td>
+                <img src="image/blog.png" alt="블로그 아이콘" /><br />
+                블로그판<br />
+              </td>
+              <td>
+                <img src="image/etc.png" alt="더보기.img" /><br />
+                더보기...<br />
+              </td>
+            </tr>
+          </table>
+        </section>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <section id="weather">
+          <img src="image/moon.png" alt="moon.img" />
+          <span>
+            10도 맑음<br />
+            어제보다 2도 높아요
+          </span>
+          <img width="40px" src="image/now.png" />
+          <span> 지금방송중 </span>
+          <img alt="test1" />
+          <img alt="test1" />
+          <img alt="test1" />
+          <details>
+            <summary>
+              <b>날씨</b> 서울시 잠실동<img src="image/target.png" />
+            </summary>
+            <table>
+              <tr>
+                <td><button>시간대별 날씨</button></td>
+                <td><button>시간대별 미세먼지</button></td>
+                <td><button>주간 날씨</button></td>
+                <td><button>주간 미세먼지</button></td>
+              </tr>
+            </table>
+            19도<br />
+            |<br />
+            8도<br />
+            <img src="image/sunny.png" />
+            오늘
+          </details>
+        </section>
+        <section id="covid">
+          <table width="100%">
+            <tr>
+              <td><img src="image/covid.png" />코로나19</td>
+              <td></td>
+              <td><img src="image/factcheck.png" />코로나19 팩트체크</td>
+            </tr>
+            <tr>
+              <td>국내외 확진 현황</td>
+              <td></td>
+              <td>백신 정보 팩트는?</td>
+            </tr>
+          </table>
+        </section>
+        <div>
+          <img src="image/korea.png" /> 제102주년 대한민국 임시정부 수립일
+        </div>
+        <div>
+          <img src="image/navermobile.png" />
+          앱으로 <b>새로운 네이버</b>를 더 쾌적하게 사용해 보세요
+          <button>앱 사용하기</button>
+        </div>
+        <details>
+          <summary>웹툰</summary>
+          웹툰입니당
+        </details>
+        <section id="popular pan">
+          <b>인기 주제 판을 확인해 보세요!</b> 판관리
+          <table>
+            <tr>
+              <td><img src="image/movie.png" /> 영화판</td>
+              <td><img src="image/bboom.png" /> 뿜판</td>
+            </tr>
+            <tr>
+              <td><img src="image/webtoon.png" />웹툰판</td>
+              <td><img src="image/economical.png" />경제M판</td>
+            </tr>
+          </table>
+        </section>
+        <div>알립니다. 네이버앱 업데이트 사전 안내</div>
+      </main>
+    </section>
+
+    <footer>
+      <!-- TODO: 하단의 여러 가지 링크들은 어떻게 처리하면 좋을까요? -->
+      <table align="center">
+        <tr>
+          <td>로그인</td>
+          <td>|</td>
+          <td align="center">전체서비스</td>
+          <td>|</td>
+          <td>PC버전</td>
+        </tr>
+        <tr>
+          <td>이용약관</td>
+          <td>|</td>
+          <td><b align="center">개인정보처리방침</b></td>
+          <td>|</td>
+          <td>고객센터</td>
+        </tr>
+      </table>
+      <br />
+      <div align="center">
+        <img src="image/navergray.png" width="20%" />
+      </div>
+    </footer>
+  </body>
+</html>
