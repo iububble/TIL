@@ -17,30 +17,29 @@
         </button>
         <img align="right" src="image/screen.png" />
       </div>
-      <img src="image/naver.png" alt="네이버 배너 이미지" />
+      <div align="center">
+        <img src="image/naver.png" alt="네이버 배너 이미지" />
+      </div>
+      <br />
+      <form style="border: none" placeholder="검색어를 입력하세요" />
+      <fieldset width="80%">
+        <input
+          id="query"
+          name="query"
+          type="search"
+          placeholder="검색창을 입력해주세요"
+        />
+        <img align="right" src="image/searchIcons.png" alt="검색보조아이콘" />
+      </fieldset>
     </header>
 
     <section class="main">
       <!-- TODO: main은 어떤 식으로 나눌 수 있을까요? -->
       <main>
-        <section id="search" align="center">
-          <span
-            ><form style="border: none" placeholder="검색어를 입력하세요" />
-            <fieldset>
-              <input
-                id="query"
-                name="query"
-                type="search"
-                placeholder="검색창을 입력해주세요"
-              />
-              <img src="image/searchIcons.png" alt="검색보조아이콘" />
-            </fieldset>
-          </span>
-        </section>
         <br />
         <br />
         <section align="center">
-          <table>
+          <table align="center">
             <tr>
               <td>
                 <img src="image/news.png" alt="뉴스판.img" /><br />
@@ -51,25 +50,50 @@
                 경제지표판<br />
               </td>
               <td>
-                <img src="image/mail.png" alt="카페 아이콘" /><br />
+                <img
+                  src="image/mail.png"
+                  width="58px"
+                  height="58px"
+                  alt="카페 아이콘"
+                /><br />
                 메일판<br />
               </td>
               <td>
-                <img src="image/mail.png" alt="카페 아이콘" /><br />
+                <img
+                  src="image/mail.png"
+                  width="58px"
+                  height="58px"
+                  alt="카페 아이콘"
+                /><br />
                 메일판<br />
               </td>
             </tr>
             <tr>
               <td>
-                <img src="image/mail.png" alt="카페 아이콘" /><br />
+                <img
+                  src="image/mail.png"
+                  width="58px"
+                  height="58px"
+                  alt="카페 아이콘"
+                /><br />
                 메일판<br />
               </td>
               <td>
-                <img src="image/cafe.png" alt="카페 아이콘" /><br />
+                <img
+                  src="image/cafe.png"
+                  width="58px"
+                  height="58px"
+                  alt="카페 아이콘"
+                /><br />
                 카페판<br />
               </td>
               <td>
-                <img src="image/blog.png" alt="블로그 아이콘" /><br />
+                <img
+                  src="image/blog.png"
+                  width="58px"
+                  height="58px"
+                  alt="블로그 아이콘"
+                /><br />
                 블로그판<br />
               </td>
               <td>
@@ -84,17 +108,23 @@
         <br />
         <br />
 
-        <section id="weather">
-          <img src="image/moon.png" alt="moon.img" />
-          <span>
-            10도 맑음<br />
-            어제보다 2도 높아요
-          </span>
-          <img width="40px" src="image/now.png" />
-          <span> 지금방송중 </span>
-          <img alt="test1" />
-          <img alt="test1" />
-          <img alt="test1" />
+        <section id="weather" align="center" width="70%">
+          <table width="80%" align="center">
+            <tr>
+              <td>
+                <img src="image/moon.png" alt="moon.img" height="42px" />
+                <b>10도 맑음</b><br />
+                어제보다 2도 높아요
+              </td>
+              <td>
+                <img width="40px" src="image/now.png" />
+                지금방송중
+                <img alt="test1" />
+                <img alt="test1" />
+                <img alt="test1" />
+              </td>
+            </tr>
+          </table>
           <details>
             <summary>
               <b>날씨</b> 서울시 잠실동<img src="image/target.png" />
@@ -107,14 +137,55 @@
                 <td><button>주간 미세먼지</button></td>
               </tr>
             </table>
-            19도<br />
-            |<br />
-            8도<br />
-            <img src="image/sunny.png" />
-            오늘
+            <table>
+              <tr>
+                <td align="center">19도</td>
+                <td align="center">22도</td>
+                <td align="center">17도</td>
+                <td align="center">18도</td>
+                <td align="center">17도</td>
+                <td align="center">19도</td>
+                <td align="center">19도</td>
+                <td align="center">19도</td>
+                <td align="center">18도</td>
+              </tr>
+              <tr>
+                <td align="center">|</td>
+                <td align="center">|</td>
+                <td align="center">|</td>
+                <td align="center">|</td>
+                <td align="center">|</td>
+                <td align="center">|</td>
+                <td align="center">|</td>
+                <td align="center">|</td>
+                <td align="center">|</td>
+              </tr>
+              <tr>
+                <td align="center">8도</td>
+                <td align="center">7도</td>
+                <td align="center">11도</td>
+                <td align="center">12도</td>
+                <td align="center">4도</td>
+                <td align="center">4도</td>
+                <td align="center">6도</td>
+                <td align="center">8도</td>
+                <td align="center">6도</td>
+              </tr>
+              <tr>
+                <td><img src="image/sunny.png" /></td>
+                <td><img src="image/rainning.png" /></td>
+                <td><img src="image/rainning.png" /></td>
+                <td><img src="image/sunny.png" /></td>
+                <td><img src="image/sunny.png" /></td>
+                <td><img src="image/sunny.png" /></td>
+                <td><img src="image/sunny.png" /></td>
+                <td><img src="image/sunny.png" /></td>
+                <td><img src="image/sunny.png" /></td>
+              </tr>
+            </table>
           </details>
         </section>
-        <section id="covid">
+        <section id="covid" align="center">
           <table width="100%">
             <tr>
               <td><img src="image/covid.png" />코로나19</td>
@@ -128,21 +199,23 @@
             </tr>
           </table>
         </section>
-        <div>
+        <div align="center">
           <img src="image/korea.png" /> 제102주년 대한민국 임시정부 수립일
         </div>
-        <div>
-          <img src="image/navermobile.png" />
+        <div align="center">
+          <img src="image/navermobile.png" width="58px" height="58px" />
           앱으로 <b>새로운 네이버</b>를 더 쾌적하게 사용해 보세요
           <button>앱 사용하기</button>
         </div>
-        <details>
+        <details align="center">
           <summary>웹툰</summary>
           웹툰입니당
         </details>
         <section id="popular pan">
-          <b>인기 주제 판을 확인해 보세요!</b> 판관리
-          <table>
+          <div align="center">
+            <b>인기 주제 판을 확인해 보세요!</b> &nbsp;&nbsp;&nbsp; 판관리
+          </div>
+          <table align="center">
             <tr>
               <td><img src="image/movie.png" /> 영화판</td>
               <td><img src="image/bboom.png" /> 뿜판</td>
@@ -153,7 +226,7 @@
             </tr>
           </table>
         </section>
-        <div>알립니다. 네이버앱 업데이트 사전 안내</div>
+        <div align="center">알립니다. 네이버앱 업데이트 사전 안내</div>
       </main>
     </section>
 
