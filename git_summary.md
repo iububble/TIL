@@ -94,3 +94,46 @@ git remote {저장소별명} [원격 저장소 주소] #원격 저장소 연결
 git remote -v                           #연결된 원격저장소 목록
 
 ```
+
+# git fetch VS git pull
+
+## HEAD란?
+
+```
+$ git log --oneline
+9e21304 (HEAD -> main) 네이버 클론코딩 완성
+6115b0c naver image 및 뼈대html
+a030b5e Initial commit
+```
+
+HEAD는 현재 브런치의 최신 커밋을 가리킨다.
+출처 : https://velog.io/@sae1013/git-HEAD-%EB%9E%80
+
+## git fetch
+
+사용법
+git fetch [저장소 별명] [브랜치명(선택)]<br>
+원격 저장소의 커밋내역을 로컬 repository(내 컴퓨터)로 불러온다.<br>
+
+확인법
+
+```
+git branch -a 원격 브랜치와 로컬의 모든 브랜치 확인
+
+$ git branch -a
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+  remotes/upstream/main
+
+remotes/origin/Head : 원격 저장소 origin의 Head브런치를 나타낸다.(가장 최근에 commit된 브랜치)
+
+```
+
+## git pull
+
+사용법
+git pull 저장소 별명 브런치 이름
+
+git fetch와 git merge를 순차적으로 실행하는 명령어로
+원격저장소의 커밋내역을 로컬로 가져와 덮어 쓰는 것이다.
