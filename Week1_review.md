@@ -3,6 +3,9 @@
 ## Commit 메세지
 
 commit을 할 때 일련의 규칙에 따라 commit 메시지를 작성하면 추후에 작업 history를 잘 이해할 수 있고 타인과의 협력이 용이하다.
+
+ex) feat: Add login api
+
 https://velog.io/@jiheon/Git-Commit-message-%EA%B7%9C%EC%B9%99
 
 feat : 새로운 기능 추가, 기존의 기능을 요구 사항에 맞추어 수정
