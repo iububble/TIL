@@ -52,3 +52,45 @@ jQuery는 주로 위와 같이 $를 사용하는 문법을 사용한다.<br>
 그리고 이렇게 선언한 함수를 뒤에 `(jquery)`를 추가해 줌으로서 바로 실행하여준다.
 
 2. $를 jquery로 바꿔서 작성하는 방법이 있다.
+
+## event bubbling과 event 위임
+
+## event 버블링이란?
+
+Dom(문서 객체 모델)구조를 통해 event가 번져 나가는 것<br>
+쉽게 말해 자식 요소에서 발생한 event(상호작용)이 부모에게 전달됨을 말한다.
+예시
+
+```
+<div onClick="alert('div')">
+<p onClick="alert('p')">
+<button>test</button>
+</p>
+</div>
+```
+
+<div onClick="alert('div')">
+<p onClick="alert('p')">
+<button>test</button>
+</p>
+</div>
+위 코드의 경우 test 버튼을 클릭하면 p경고창이 뜨고 확인을 누르면 div경고창이 뜬다.<br>
+test는 onclick속성이 없음에도 경고창이 뜬 이유가 바로 event 버블링이다.
+https://ko.javascript.info/bubbling-and-capturing
+https://hangeoreum.tistory.com/entry/JS-Event-Delegation%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9C%84%EC%9E%84
+
+## 이벤트 위임
+
+이벤트 위임이라 함은 상위 객체 이벤트를 제어함으로서 <br>
+아직 생성되지 않은 dom객체의 이벤트를 제어함을 말한다.
+그 원리는 event 버블링을 기반으로 두고 있다.<br>
+즉, 상위 객체에만 이벤트 handler가 있더라도 이벤트 버블링을 통해 상위객체까지 전달되어 온다.
+
+## 백틱(`), 키보드 물결표의 사용\
+
+(백틱=키보드 물결표)를 따옴표 대신 사용하면 ${}를 통해 문자열 내부에 변수를 넣을 수 있다.
+
+```
+var name='jinha'
+$('#ul').append("<li>hello world ${name}</li>")
+```
