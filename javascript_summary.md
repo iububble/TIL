@@ -86,7 +86,7 @@ https://hangeoreum.tistory.com/entry/JS-Event-Delegation%EC%9D%B4%EB%B2%A4%ED%8A
 그 원리는 event 버블링을 기반으로 두고 있다.<br>
 즉, 상위 객체에만 이벤트 handler가 있더라도 이벤트 버블링을 통해 상위객체까지 전달되어 온다.
 
-## 백틱(`), 키보드 물결표의 사용\
+## 백틱(`), 키보드 물결표의 사용
 
 (백틱=키보드 물결표)를 따옴표 대신 사용하면 ${}를 통해 문자열 내부에 변수를 넣을 수 있다.
 
@@ -94,3 +94,15 @@ https://hangeoreum.tistory.com/entry/JS-Event-Delegation%EC%9D%B4%EB%B2%A4%ED%8A
 var name='jinha'
 $('#ul').append("<li>hello world ${name}</li>")
 ```
+
+## javascript this vs jquery $(this) 차이ㅏ
+
+js는 해당 dom 객체를 표현<br>
+jquery는 해당 dom 객체의 정보를 가진 object로 표시
+https://inpa.tistory.com/entry/jQuery-%F0%9F%93%9A-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-this-%E2%9A%94%EF%B8%8F-%EC%A0%9C%EC%9D%B4%EC%BF%BC%EB%A6%AC-this?category=889098
+
+## jquery event 객체 사용법
+
+jquery는 chain이라는 특성덕분에 계속 연결해서 코드를 작성하기 용이하다.<br>
+그러나 jquery의 event.target은 jquery객체가 아니어서 jquery method들을 사용하기 힘들다.<br>
+그래서 $(event.target)을 사용하여 jquery객체로 변환 시킬 수 있다.
