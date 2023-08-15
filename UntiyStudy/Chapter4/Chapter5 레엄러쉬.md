@@ -242,3 +242,169 @@ distance와 range를 비교해서 distance가 큰 경우 particle system의 emis
 
 ### ? 궁금증
 왜 play나 stop은 안되지?
+
+
+
+# 타워 배치에 제한을 두기 위한 통화 시스템
+Bank라는 객체에서 통화의 조회, 입출금을 통제한다.
+Bank Object생성- Bank 스크립트 부착
+## 적 처지 시 통화 획득, 적 도착 시 통화 지출
+전체 구조
+1. EnemyMover, EnemyHealth에서 이벤트 발생
+2. EnemyMover, EnemyHealth에서 Enemy Script 접근
+3. Enemy Script에서 Bank Script 접근
+* 이 모든 것은 public 접근자 method를 통해 가능
+
+
+### Bank Script
+현재 잔액, 초기 잔액 설정, 입출금 함수, 충분한 잔액이 있는지 확인하는 함수를 작성한다.
+### Enemy Script
+적이 죽을 때마다 Bank에 돈을 입금한다., 적이 목적지에 도달하면 Bank에서 돈을 출금한다.
+따라서 Enemy Script에서 Bank Script에 접근해야 한다.
+### EnemyHealth Script
+적이 죽을 때, Enemy Script에 접근하여 Bank에 입금한다.
+### EnemyMover Script
+적이 목적지에 도달할 때, Enemy Script에 접근하여 Bank에서 출금한다.
+
+## 타워 배치시 통화 소모 및 통화 제한
+타워 배치시 통화 소모=> 타워의 인스턴스화와 관련된다.
+따라서, 기존의 코드 수정이 필요하다.
+파일 구조
+1. 타일에 클릭 이벤트 발생 (Waypoint 스크립트) Tower Script호출
+2. Tower 스크립트에서 Bank 스크립트에 접근하여 조건 확인
+3. 타워 인스턴스화 (Tower 스크립트)
+
+## 게임오버
+통화가 음수가 되면 게임오버가 되도록 한다.
+Bank Script에서 게임오버를 확인하는 함수를 작성한다.
+
+# UI를 통해 통화 표시하기
+1. TextMeshPro를 통해 통화 표시
+2. 종횡비를 고려하여 UI를 배치한다.( 16:9) game view에서 확인 가능
+3. 종횡비로 인해 화면을 벗어난 UI를 재배치
+TextMeshPro-Rect transform 사각형 모양의 Ancher preset과 shif_+alt 클릭을 통해 좌하단으로 위치 조절
+4. Bank Script에서 UI에 접근하여 통화를 표시한다.(why Bank인가? 통화를 관리하는 객체이기 때문이다.)
+<br>
+?의문 Anchor는 머고 shift+alt는 머지
+Anchor란 부모에 대하여 상대적인 Rect trnasform의 위치를 결정하는 것 같다.
+Anchor preset이란 미리 정해진 Anchor의 위치를 말하는 것 같다.
+shift=> pivot(회전, 크기조절 시 기준점)위치도 변경
+alt=> 상대적 위치도 변경 
+참고 자료 : https://ansohxxn.github.io/unity%20lesson%202/ch7-2/, https://ssabi.tistory.com/10. https://ugames.tistory.com/entry/%EC%9C%A0%EB%8B%88%ED%8B%B0-UI-%EA%B0%9C%EB%85%90-Anchor-%EC%99%80-Pivot
+Bank script에서 TextMeshPro가 아니라 왜 TextMeshProUGUI를 사용하는가?
+
+
+
+# 적 업그레이드
+적이 죽을 때마다 체력이 늘어나도록 설정
+EnemyHealth Script에서 적의 체력을 늘리는 함수를 작성한다.
+EnemyHealth Script 컴포넌트를 추가하려면, Enemy Script도 같이 추가하도록 RequireComponent를 통해 설정한다.
+
+
+
+
+# 경로 찾기 알고리즘
+기존에는 Path 태그를 통해 경로를 찾았다. 그러나 이는 경로가 하나일 때만 가능하다.
+이제는 정해진 길을 따라가는 것이 아니라 타워 설치에 따라 변경되는 경로를 찾아야 한다.
+
+BFS-> Dijkstra -> A* 형태로 변형가능
+각각의 특징
+* A* 알고리즘
+빠른 경로를 찾는다.(최적은 아닐수도 있다.)
+시작지점과 도착지점이 각각 1개씩 존재할 때 사용한다.
+속도 : 빠름
+* Dijkstra 알고리즘
+가장 빠른 경로를 찾는다.
+속도 : 느림
+* BFS 알고리즘
+가장 빠른 경로를 찾는다.
+이동비용 반영 X
+속도 : 중간
+
+강의에서는 최적경로를 찾고 2개 이상으로 확장도 가능하도록 BFS를 사용예정
+
+## BFS 알고리즘
+Tree 구조를 통해 표현
+* Node : 각각의 위치
+* Edge : Node와 Node를 연결하는 선
+
+### BFS 알고리즘의 특징
+* 시작점에서 가까운 순서대로 탐색한다.
+* 1차 자식 노드를 탐색 후 이웃 노드를 탐색한다.
+
+# BFS 구현하기
+기존 Unity script에서 MonoBehaviour를 상속받지 않는 C# script로 변경한다.
+<br>=> 이 경우 Unity에 컴포넌트로서 추가할 수 없다.=> 즉 콘솔 결과에 의지해야 한다.
+
+## Node class를 작성한다.
+Node class는 각각의 위치를 나타낸다.
+Node class는 순수 C# script이므로 Inspector 창에서 확인하기 위해서는 클래스 바깥에 [System.Serializable]을 작성해야 한다.
+그렇지 않으면 타 스크립트에서 Inspector를 통해 Node를 입력할 수 없다.
+
+
+
+### GridManger Script
+전체 Grid를 관리하는 Script
+1. 전체 그리드를 Dictionary에 저장한다.
+```
+Dictionary는 key와 value를 가지는 자료구조이다.
+key=> Node의 좌표
+value=> Node 객체 자체
+key는 고유한 값
+value는 중복 가능, Null 가능
+```
+* Dictionary<key, value>로 선언한다.
+* Dictionary.Add(key, value)로 추가한다.
+* Dictionary.ContainsKey(key)로 key가 존재하는지 확인한다.
+* Dictionary[key]로 value를 얻는다.
+
+key=> Vector2Int, value=> Node 로 저장한다.
+
+* 의문, 궁금점 음수에서는 노드를 다룰 수 없다.  => 0,0을 기준으로 좌표를 설정한다.(왜 그럴까?)
+
+### Pathfinder script
+BFS 알고리즘을 통해 경로를 찾는다.
+Dictonary를 통해 탐색된 노드 저장
+Queue를 통해 미탐색(=탐색 기준이 될) 노드 저장
+
+?? 궁금증 왜 큐를 쓸까?
+
+* Queue
+FIFO(First In First Out) 구조의 자료구조이다.
+* Queue.Enqueue(value)로 value를 추가한다.
+* Queue.Dequeue()로 value를 꺼낸다. 이 때 value는 삭제된다.
+* Queue.peek()로 첫value를 꺼내지 않고 확인한다.
+출처 :https://learn.microsoft.com/ko-kr/dotnet/api/system.collections.generic.queue-1.dequeue?view=net-7.0
+* Queue.Count로 value의 개수를 확인한다.
+
+
+# BFS시 장애물 고려하기
+현재 Pathfinder(BFS)는 나무를 고려하지 않고 경로를 찾는다.
+따라서 나무를 고려하여 경로를 찾아야 한다.
+grid(딕셔너리)에서 나무가 있는 위치를 나타내는 node의 iswalkable을 false로 설정해야한다.
+이를 위해 기존의 blocked를 나타냈던 isPlaceable을 iswalkable과 연결시킨다.
+* isPlaceable은 타워를 배치할 수 있는지를 나타내는 변수이다.
+* isPlaceable=false인 경우 iswalkable=false로 바꾸자는 아이디어로 시작
+1. 나무가 있는 node의 좌표값을 찾는다. => Tile에 Tile script를 부착하여 3D좌표값을 2D좌표값으로 변환한다.(GetCoordinateFromPosition())
+2. 좌표값을 통해 해당 node를 찾는다.    
+3. 해당 node의 iswalkable을 false로 설정한다.   => 2,3번은 BlockNode()로 구현한다.
+
+## 현재 문제점
+* 시작 시 위치한 장애물을 고려한 길찾기를 한다.=> 타워 설치도 반영하여 길을 찾아야 한다.
+시작 이후에도 길 찾는 알고리즘을 실행시킬 필요가 있다.=> 이전에 찾았던 경로를 초기화 필요
+* GetPath 메소드
+<br>=>(gridManager의 grid 속 node의 isexplored, isPath, toConnect을 초기화)
+<br>=>(pathfinder의 dictionary, queue를 초기화)
+
+
+? 의문: KeyValuePair vs Dictionary 무슨 차이인가? 일단 dictionary는 entry.value로 값을 못가져오는 듯 하다.
+* player가 모든 경로를 막는 장애물을 설치하면 길을 찾을 수 없다.=> 타워 설치전 길을 막으면 못 설치하게 해야한다.
+* WillBlockPath 메소드
+1. 타워를 설치하려는 node(타일)가 isWalkable=false라 가정하고 경로 계산 
+2. 경로 탐색 불가 시 설치 X
+
+
+# 적이 BFS로 탐색한 경로를 따라 이동시키기
+EnemyMover Script를 수정한다.
+
+
